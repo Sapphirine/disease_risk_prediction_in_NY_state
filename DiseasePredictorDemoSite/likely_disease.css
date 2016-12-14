@@ -1,0 +1,27 @@
+#inputDiv{
+	color:#646464;
+}
+
+#resultDiv{
+	background-color: #E1E4E9 !important;
+}
+
+body{
+	background-color: rgb(56, 62, 75) !important;
+
+}
+
+.input-group{
+	margin-top: 10px;
+}
+
+input[type="text"], textarea {
+
+    background-color : rgb(192,192,192) !important; 
+    border-color : #999DA3 !important;
+
+}
+
+.tab-pane p{
+	font-size: 110%;
+}

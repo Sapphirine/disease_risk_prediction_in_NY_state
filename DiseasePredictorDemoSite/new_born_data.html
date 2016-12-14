@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>NY State Newborn Map in 2013</title>
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <style type="text/css">
+            #container {
+                height: 900px; 
+                min-width: 410px; 
+                max-width: 1000px; 
+                margin: 0 auto; 
+            }
+            .loading {
+                margin-top: 10em;
+                text-align: center;
+                color: gray;
+            }
+        </style>
+        <script type="text/javascript">
+            $(function () {
+
+                // Prepare demo data
+                var data = [{ 'hc-key': 'us-ny-009', value: 749 },
+                    { 'hc-key': 'us-ny-013', value: 1151 },
+                    { 'hc-key': 'us-ny-103', value: 13723 },
+                    { 'hc-key': 'us-ny-045', value: 2024 },
+                    { 'hc-key': 'us-ny-029', value: 11095 },
+                    { 'hc-key': 'us-ny-121', value: 190 },
+                    //{ 'hc-key': 'us-ny-073', value: 0 },
+                    { 'hc-key': 'us-ny-055', value: 9888 },
+                    { 'hc-key': 'us-ny-089', value: 997 },
+                    { 'hc-key': 'us-ny-059', value: 16241 },
+                    { 'hc-key': 'us-ny-081', value: 23661 },
+                    { 'hc-key': 'us-ny-091', value: 741 },
+                    { 'hc-key': 'us-ny-001', value: 4646 },
+                    { 'hc-key': 'us-ny-063', value: 1280 },
+                    //{ 'hc-key': 'us-ny-031', value: 0 },
+                    { 'hc-key': 'us-ny-035', value: 356 },
+                    //{ 'hc-key': 'us-ny-043', value: 0 },
+                    { 'hc-key': 'us-ny-087', value: 4679 },
+                    { 'hc-key': 'us-ny-119', value: 10544 },
+                    { 'hc-key': 'us-ny-071', value: 3462 },
+                    { 'hc-key': 'us-ny-037', value: 626 },
+                    { 'hc-key': 'us-ny-053', value: 520 },
+                    { 'hc-key': 'us-ny-005', value: 15329 },
+                    { 'hc-key': 'us-ny-061', value: 43474 },
+                    { 'hc-key': 'us-ny-047', value: 29575 },
+                    { 'hc-key': 'us-ny-057', value: 491 },
+                    { 'hc-key': 'us-ny-077', value: 1131 },
+                    { 'hc-key': 'us-ny-065', value: 2644 },
+                    //{ 'hc-key': 'us-ny-115', value: 0 },
+                    { 'hc-key': 'us-ny-117', value: 649 },
+                    { 'hc-key': 'us-ny-003', value: 261 },
+                    { 'hc-key': 'us-ny-051', value: 279 },
+                    { 'hc-key': 'us-ny-017', value: 271 },
+                    //{ 'hc-key': 'us-ny-025', value: 0 },
+                    //{ 'hc-key': 'us-ny-095', value: 0 },
+                    { 'hc-key': 'us-ny-111', value: 376 },
+                    { 'hc-key': 'us-ny-021', value: 441 },
+                    { 'hc-key': 'us-ny-101', value: 668 },
+                    { 'hc-key': 'us-ny-069', value: 825 },
+                    { 'hc-key': 'us-ny-015', value: 1394 },
+                    { 'hc-key': 'us-ny-109', value: 850 },
+                    { 'hc-key': 'us-ny-023', value: 435 },
+                    { 'hc-key': 'us-ny-011', value: 376 },
+                    { 'hc-key': 'us-ny-075', value: 610 },
+                    { 'hc-key': 'us-ny-079', value: 386 },
+                    { 'hc-key': 'us-ny-049', value: 290 },
+                    //{ 'hc-key': 'us-ny-099', value: 0 },
+                    //{ 'hc-key': 'us-ny-041', value: 0 },
+                    { 'hc-key': 'us-ny-019', value: 789 },
+                    { 'hc-key': 'us-ny-083', value: 1143 },
+                    //{ 'hc-key': 'us-ny-039', value: 0 },
+                    { 'hc-key': 'us-ny-027', value: 3304 },
+                    { 'hc-key': 'us-ny-085', value: 5679 },
+                    //{ 'hc-key': 'us-ny-097', value: 0 },
+                    { 'hc-key': 'us-ny-105', value: 600 },
+                    { 'hc-key': 'us-ny-113', value: 1336 },
+                    { 'hc-key': 'us-ny-007', value: 2723 },
+                    { 'hc-key': 'us-ny-093', value: 2566 },
+                    //{ 'hc-key': 'us-ny-107', value: 0 },
+                    { 'hc-key': 'us-ny-033', value: 401 },
+                    { 'hc-key': 'us-ny-067', value: 6794 }
+                    //{ 'hc-key': 'us-ny-123', value: 0 }];
+                    ];
+
+                    
+                // Initiate the chart
+                $('#container').highcharts('Map', {
+                    title : {
+                        text : 'New York State Newborn Information in 2013'
+                    },
+
+                    // subtitle : {
+//                         text : 'Source map: <a href="https://code.highcharts.com/mapdata/countries/us/us-ny-all.js">countries/us/us-ny-all</a>'
+//                     },
+
+                    mapNavigation: {
+                        enabled: true,
+                        buttonOptions: {
+                            verticalAlign: 'top'
+                        }
+                    },
+
+                    colorAxis: {
+                        dataClasses: [{
+                    from: 0,
+                    to: 0,
+                    color: "#F1EEF6"
+                }, {
+                    from: 1,
+                    to: 400,
+                    color: "#D0EDAE"
+                }, {
+                    from: 401,
+                    to: 1200,
+                    color: "#97ED8A"
+                }, {
+                    from: 1201,
+                    to: 5000,
+                    color: "#45BF55"
+                }, {
+                    from: 5001,
+                    to: 20000,
+                    color: "#167F39"
+                }, {
+                    from: 20001,
+                    color: "#044C29"
+                }]
+                    },
+
+                    series : [{
+                        data : data,
+                        mapData: Highcharts.maps['countries/us/us-ny-all'],
+                        joinBy: 'hc-key',
+                        name: 'Newborns',
+                        states: {
+                            hover: {
+                                color: '#EDBE2B'
+                            }
+                        },
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.name}'
+                        }
+                    }]
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+        <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/mapdata/countries/us/us-ny-all.js"></script>
+
+        <nav class="navbar navbar-inverse navbar-static-top" style="margin-bottom:0px">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"/>
+                <span class="icon-bar"/>
+                <span class="icon-bar"/>
+              </button>
+              <a class="navbar-brand" href="index.html">Demo Site</a>
+              
+            </div>
+          </div>
+        </nav>
+        <div id="container"></div>
+        <div style='text-align:center'>
+            Note: data of 0 means no data is available
+        </div>
+
+    </body>
+</html>
