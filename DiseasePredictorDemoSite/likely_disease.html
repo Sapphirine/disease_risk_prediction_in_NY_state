@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <title>Demo Site</title>
+   <meta name="viewport" content="initial-scale=1.0">
+   <meta charset="utf-8">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"> </script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.js"></script>
+  <link rel="stylesheet" href="likely_disease.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="likely_disease.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-static-top" style="margin-bottom:0px">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"/>
+            <span class="icon-bar"/>
+            <span class="icon-bar"/>
+          </button>
+          <a class="navbar-brand" href="index.html">Demo Site</a>
+          
+        </div>
+      </div>
+    </nav>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div id='inputDiv' class='col-md-3'>
+          <row>
+            <div class="input-group input-group-sm col-md-12">
+              <span class="input-group-addon" id="basic-addon3">Age group</span>
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select<span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a id='ageGroupSelection4' onClick='setAgeGroup(this.id, 4)' href="#">70 and older</a></li>
+                  <li><a id='ageGroupSelection3' onClick='setAgeGroup(this.id, 3)' href="#">50 to 69</a></li>
+                  <li><a id='ageGroupSelection2' onClick='setAgeGroup(this.id, 2)' href="#">30 to 49</a></li>
+                  <li><a id='ageGroupSelection1' onClick='setAgeGroup(this.id, 1)' href="#">18 to 29</a></li>
+                  <li><a id='ageGroupSelection0' onClick='setAgeGroup(this.id, 0)' href="#">0 to 17</a></li>
+                </ul>
+              </div>          
+            </div>
+            <div class="input-group input-group-sm col-md-12">
+              <span class="input-group-addon" id="basic-addon3">Gender</span>
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select<span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a id='genderSelection0' onClick='setGender(this.id, 0)' href="#">Male</a></li>
+                  <li><a id='genderSelection1' onClick='setGender(this.id, 1)' href="#">Female</a></li>
+                </ul>
+              </div>          
+            </div>
+            <div class="input-group input-group-sm col-md-12">
+              <span class="input-group-addon" id="basic-addon3">Race</span>
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select<span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a id='raceSelection0' onClick='setRace(this.id, 0)' href="#">White</a></li>
+                  <li><a id='raceSelection1' onClick='setRace(this.id, 1)' href="#">Black/African American</a></li>
+                  <li><a id='raceSelection2' onClick='setRace(this.id, 2)' href="#">Others</a></li>
+                  <li><a id='raceSelection3' onClick='setRace(this.id, 3)' href="#">Don't want to disclosure</a></li>
+                </ul>
+              </div>          
+            </div>
+            <div class="input-group input-group-sm col-md-12">
+              <span class="input-group-addon" id="basic-addon3">Ethnicity</span>
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select<span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a id='ethnicitySelection0' onClick='setEthnicity(this.id, 0)' href="#">Not Hispanic</a></li>
+                  <li><a id='ethnicitySelection1' onClick='setEthnicity(this.id, 1)' href="#">Hispanic</a></li>
+
+                </ul>
+              </div>          
+            </div>
+            <button onClick='replotGraph()' class='btn' style='float:right; margin-top:30px'> Submit </button>
+          </row>
+          
+        </div>
+        <div class='col-md-9' id='resultDiv' style="min-height:900px">
+          <div class='row' style='margin-top:20px'>
+            <div class='col-md-10'>
+              <div class="panel panel-default">
+                <div class="panel-heading">Disease Likelyhood</div>
+                <div class="panel-body" id='likelyhoodChartDiv'>
+                  <canvas id="myChart" width="400" height="250"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class='col-md-10'>
+              <div class="panel panel-default">
+                <div class="panel-heading">Disease Description</div>
+                <div class="panel-body">
+                  
+
+                  <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#diseaseDescription0" id='diseaseName0'>Home</a></li>
+                    <li><a data-toggle="tab" href="#diseaseDescription1" id='diseaseName1' >Menu 1</a></li>
+                    <li><a data-toggle="tab" href="#diseaseDescription2" id='diseaseName2'>Menu 2</a></li>
+                    <li><a data-toggle="tab" href="#diseaseDescription3" id='diseaseName3'>Menu 1</a></li>
+                    <li><a data-toggle="tab" href="#diseaseDescription4" id='diseaseName4'>Menu 1</a></li>
+                  </ul>
+
+                  <div class="tab-content" style="margin-top:20px">
+                    <div id="diseaseDescription0" class="tab-pane fade in active">
+                      <p>Some content.</p>
+                    </div>
+                    <div id="diseaseDescription1" class="tab-pane fade">
+                      <p>Some content in menu 1.</p>
+                    </div>
+                    <div id="diseaseDescription2" class="tab-pane fade">
+                      <p>Some content in menu 2.</p>
+                    </div>
+                    <div id="diseaseDescription3" class="tab-pane fade">
+                      <p>Some content in menu 2.</p>
+                    </div>
+                    <div id="diseaseDescription4" class="tab-pane fade">
+                      <p>Some content in menu 2.</p>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+              
+            </div>
+            <div class='col-md-10'>
+              <div class="panel panel-default">
+                <div class="panel-heading">Disease Severeness</div>
+                <div class="panel-body" id='severenessChartDiv'>
+                  <canvas id="myChart2" width="400" height="250"></canvas>
+                </div>
+              </div>
+            </div>
+            
+          </div><!--row-->
+        </div><!--resultDiv-->
+      </div><!--row-->
+    </div><!--container-fluid-->
+
+
+
+  </body>
+</html>
