@@ -2,6 +2,6 @@
 
 # Constucting Disease Likelihood Predictor in NY State
 
-# Team Members: Kaili Chen & Rong Zhou & Tianyu Yang
+## Team Members: Kaili Chen & Rong Zhou & Tianyu Yang
 
-# ProjectID: 48
+## ProjectID: 48
