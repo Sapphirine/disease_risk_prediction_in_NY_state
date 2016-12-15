@@ -1,6 +1,6 @@
 # E6893 Big Data Analytics:
 
-# Constucting Disease Likelihood Predictor in NY State
+# Disease Risk Prediction in New York State
 
 ## Team Members: Kaili Chen & Rong Zhou & Tianyu Yang
 
